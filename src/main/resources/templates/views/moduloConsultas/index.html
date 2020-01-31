@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: head-consulta" />
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div th:replace="fragments/indexHeader"></div>
+	</nav>
+	<div id="wrapper">
+		<div th:replace="fragments/indexMenu"></div>
+	</div>
+	<div th:fragment="content">
+		<div class="container">
+
+			<div>
+				<!--Colocaremos aqui los imputs hidden de juntos-->
+			</div>
+
+			<div class="panel content-main">
+				<div class="panel">
+					<div class="page-head">
+						<ol class="breadcrumb page-head-nav">
+							<li><span style="font-size: 20px; cursor: pointer" onclick="openNav()">&#9776;</span></li>
+							<li><a href="#">Home</a></li>
+		                    <li>Consultas</li>
+		                    <li class="active">Caja Chica</li>
+						</ol>
+					</div>
+					
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-12">
+							
+								<b class="text-primary"><small>FILTRO</small></b><br/><br/>
+								
+								<div class="col-sm-12">
+									<div th:if="${solo}" class="col-sm-6">
+										<p style="margin-left: 5px;">
+											<b><small>SEDE&nbsp;</small></b>: <span id="sedeF"></span><br/>
+										</p>
+									</div>
+									
+									
+									<div th:if="${!solo}" class="col-sm-6">
+										<select class="form-control input-sm select2" id="selSedes">
+												<option value="0">Seleccione Sede</option>
+												<option th:each="sede : ${listadoSedes}"
+														th:value="${sede.idSede}"
+														th:text="${sede.descripcionSede.trim()}"></option>
+										</select>
+									</div>
+									
+									
+									<div  class="col-sm-6">
+										<select class="form-control input-sm select2" id="selRendicionesCajaChica">
+											<option value="0">Seleccione Envíos Previos</option>
+											<option th:each="cc : ${listadoEnvios}"
+													th:value="${cc.idRendicionCajaChica}"
+													th:text="${cc.fechaRendicionCajaChicaTxt}"></option>
+										</select>
+									</div>
+									<br/><br/><br/>
+									<div class="col-sm-1">
+										<div class="input-group">
+											<button class="btn btn-azul" 
+												onclick="cargarConsulta();">
+												<i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar
+											</button>
+											
+										</div>
+									</div>
+									<form id="frmExportarExcel" action="ExportarExcelConsulta" method="POST">
+											<div class="input-group">
+												<input id="miXls" name="miXls" type="hidden" />
+												<input id="nombreXls" name="nombreXls" type="hidden" />
+											</div>
+									</form>
+									<br/><br/>
+								</div>
+								
+							
+							</div>
+						</div>
+					</div>
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+					<div class="panel-body">
+						<div class="row" style="padding-left: 15px; padding-right: 10px;">
+							<div class="col-sm-7">
+								<h4 class="text-primary">LISTADO DE RENDICIONES CAJA CHICA </h4>
+								<br />
+							</div>
+							<div class="col-sm-4">&nbsp;</div>
+							<div class="col-sm-1" style="text-align: right" id="exportarExcel">
+								<img th:src="@{img/Excel-xls.ico}" alt="exportar Excel" width="40" /><br/>
+							</div>
+							
+						</div>
+						<div class="row">
+
+							<div class="table-responsive"
+								style="padding: 1em; text-align: center;">
+								<table id="listadoRendicionCajaChica"
+									class="table table-striped table-hover table-fw-widget table-text-small display3"
+									style="width: 100%; overflow-x: auto;">
+									<thead>
+										<tr style="text-align: left;">
+											<th class="small col-md-2">Fecha rendicion</th>
+											<th class="small col-md-2">Importe total</th>
+											<th class="small col-md-3">Estado Rendicion</th>
+											<!-- <th class="small col-md-3">Tesoreria</th> -->
+										</tr>
+									</thead>
+									<tbody style="font-size: 11px; text-align: left;">
+
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+					     
+					    
+				</div>
+						
+
+					
+			</div>
+			
+		</div>
+		
+		
+	</div>
+	<footer th:replace="layout :: footer-consulta"></footer>
+	<div th:fragment="javascript">
+		<script type="text/javascript"
+			th:src="@{js/consultaRendicionCajaChica.js}"></script>
+		<script th:inline="javascript">
+			var sede = [[${sede}]];
+		</script>
+	</div>
+</body>
+</html>

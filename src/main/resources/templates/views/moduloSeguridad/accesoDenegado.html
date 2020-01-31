@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head-consulta" />
+<body>
+	<div th:fragment="content">
+		<div class="container">
+			    <div style="width: 80%; background-color: #fff;">
+                    <div>
+                    <h2 style="font-size: 50px; text-align: center;">
+                    	<span style="color: #bbb;font-size: 80px;">401</span><br/>
+                     No tiene acceso a este recurso.
+                    </h2>
+                    </div>
+                    <br/>
+                    <div class="splash-footer"><a href="./index">Volver</a></div><br/>
+                    <div class="splash-footer"><span>© JUNTOS 2019 </span></div>
+                </div>
+            
+		</div>
+			
+	</div>
+	<footer th:replace="layout :: footer-consulta"></footer>
+	<div th:fragment="javascript">
+		
+	</div>
+</body>
+</html>

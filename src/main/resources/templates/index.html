@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: head-consulta" />
+<body>
+ 
+ 	<nav class="navbar navbar-default navbar-fixed-top" >
+		<div th:replace="fragments/indexHeader :: indexHeader"></div>
+	</nav>
+	<div id="wrapper">
+		<div  th:replace="fragments/indexMenu :: indexMenu"></div>
+	</div>
+	
+	<div>
+		<input id="menuPrincipal" type="hidden" th:value="${menuPrincipal}" />
+		<input id="menuActivo" type="hidden" th:value="${menuActivo}" />
+	</div>
+	<div th:replace="${view} :: content" >En este lugar se reemplazara el contenido</div>
+	
+
+	<footer th:replace="fragments/footer :: footer"></footer>
+	
+	<div th:replace="${view} :: javascript"></div>
+	<script th:inline="javascript">
+			var contextRoot = /*[[@{/}]]*/ '';
+	</script>
+
+</body>
+</html>

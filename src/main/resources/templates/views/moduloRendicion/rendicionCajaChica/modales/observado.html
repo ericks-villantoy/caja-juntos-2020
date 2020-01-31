@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+	
+	<div role="dialog" class="modal fade colored-header colored-header-primary" id="modalObservacion" data-backdrop="static" data-keyboard="false" >
+		<div class="modal-dialog custom-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">OBSERVACION</h3>
+                </div>
+                <div>
+					<input id="idDetalleRendicionObservado" type="hidden" />
+				</div>
+                <div class="modal-body">
+                   	<textarea id="observacionRendicionCajaChica" class="form-control" rows="10" cols="5" ></textarea>	
+                   
+                </div>
+                
+                <div class="modal-footer">
+                	
+                	<div class="col-sm-2">
+						<button type="button" id="cerrarVisorPdf" data-dismiss="modal" class="btn btn-azul "  >
+	                    	<i class="glyphicon glyphicon-remove"></i>
+	                    	Cerrar
+                    	</button>
+					</div>
+					<div class="col-sm-8">&nbsp;</div>
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-primary"
+							id="observarRegistro">
+							<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Aceptar
+						</button>
+					</div>
+                	
+                	
+                    
+                </div>
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

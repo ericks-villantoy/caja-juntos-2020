@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: head-consulta" />
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div th:replace="fragments/indexHeader"></div>
+	</nav>
+	<div id="wrapper">
+		<div th:replace="fragments/indexMenu"></div>
+	</div>
+	<div th:fragment="content">
+	
+		<div class="container">
+			<div>
+				<input id="idAdministrado" type="hidden" />
+				<input id="idRendicion" type="hidden" th:value="${idRendicion}" />
+				<input id="idDetalleRendicion" type="hidden" />
+			</div>
+
+			<div class="panel content-main">
+				<div class="panel">
+					<div class="page-head">
+						<ol class="breadcrumb page-head-nav">
+							<li><span style="font-size: 20px; cursor: pointer"
+								onclick="openNav()">&#9776;</span></li>
+							<li><a href="#">Home</a></li>
+							<li>Rendicion</li>
+							<li class="active">Aprobación</li>
+						</ol>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<br/>
+							<div class="col-sm-12">
+								<b class="text-primary"><small>RENDICION DETALLE</small></b><br/><br/>
+							<br/>
+								<div class="row">
+									<div class="col-sm-9">
+										<p style="margin-left: 5px;">
+											<b><small>ADMINISTRADO&nbsp;</small></b>: <span id="administrado"></span><br /> 
+											<b><small>FECHA COMISION&nbsp;</small></b>: <span id="fechaComision"></span><br /> 
+											<b><small>DOCUMENTO REFERENCIA&nbsp;</small></b>: <img id="documentoUpload" th:src="@{/img/pdf.png}" onclick="visualizaDocumento();"
+												alt="Visualizar Documento" width="35" /><br />
+											<b><small>COMENTARIO&nbsp;</small></b>: <span id="comentario"></span><br /> <br />
+										</p>
+									</div>
+									<div class="col-sm-3">&nbsp</div>
+
+
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+					<div class="panel-body">
+						<div class="row" style="padding-left: 15px; padding-right: 10px;">
+							<div class="col-sm-7">
+								<h4 class="text-primary">ITEMS DE LA RENDICION </h4>
+								<br />
+							</div>
+							<div class="col-sm-5">&nbsp;</div>
+							
+						</div>
+						<div class="row">
+
+							<div class="table-responsive"
+								style="padding: 1em; text-align: center;">
+								<table id="listadoDetalleItems"
+									class="table table-striped table-hover table-fw-widget table-text-small display3"
+									style="width: 100%; overflow-x: auto;">
+									<thead>
+										<tr style="text-align: left;">
+											<th class="small col-md-2">Fecha</th>
+											<th class="small col-md-4">Tipo</th>
+											<th class="small col-md-1">Proveedor/Colaborador</th>
+											<th class="small col-md-2">Importe</th>
+											<th class="small col-md-2">Pagado</th>
+											<th class="small col-md-1" style="text-align: center;">Opciones</th>
+
+										</tr>
+									</thead>
+									<tbody style="font-size: 11px; text-align: left;">
+
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+						
+					</div>
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+					<div class="panel-body">
+						<div class="row" style="padding-left: 15px; padding-right: 10px;">
+							<div class="col-sm-7">
+								<h4 class="text-primary">FLUJO DE APROBACIÓN</h4>
+								<br />
+							</div>
+							<div class="col-sm-5">&nbsp;</div>
+
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div id="confirmacionFlujo">
+									<div class="col-sm-8">
+										<select class="form-control input-sm select2" id="selAccion">
+														<option value="0">Seleccione Accion</option>
+														<option value="1">Aprobar</option>
+														<option value="2">Observar</option>
+														
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<div class="input-group">
+											<button class="btn btn-primary" id="confirmarAccion" onclick="confirmarAccion();">
+												<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Confirmar
+											</button>
+		
+										</div>
+									</div>
+									<br/>
+									<div class="col-sm-12">
+										<div id="observAccion" style="display: none">
+										<textarea id="comentarioAprobacion" class="form-control" rows="4" cols="5" placeholder="Digite detalle de la observación" ></textarea>
+										</div>
+									</div>
+								
+								</div>
+						</div>
+							<div class="col-sm-6">
+							
+								<div class="list-group" id="flujoApro">
+								  <a href="#" class="list-group-item list-group-item-action">Eventos de Aprobación</a>
+								</div>
+							
+							</div>
+						
+						
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	<div th:include="views/moduloRendicion/rendicionAprobacion/modales/itemRendicionView"></div>
+	<div th:include="views/moduloRendicion/rendicionAprobacion/modales/mostrarPdf"></div>
+
+	</div>
+	<footer th:replace="layout :: footer-consulta"></footer>
+	<div th:fragment="javascript">
+		<script type="text/javascript" th:src="@{/js/rendicionAprobacionDetalle.js}"></script>
+		<script th:inline="javascript">
+			var rendicion = {};
+			var administrado = {};
+		</script>
+		
+	</div>
+</body>
+</html>

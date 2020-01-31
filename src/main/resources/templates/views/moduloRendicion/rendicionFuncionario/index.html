@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: head-consulta" />
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div th:replace="fragments/indexHeader"></div>
+	</nav>
+	<div id="wrapper">
+		<div th:replace="fragments/indexMenu"></div>
+	</div>
+	<div th:fragment="content">
+	
+		<div class="container">
+			<div>
+				<input id="expedienteSeleccionada" type="hidden" />
+			</div>
+
+			<div class="panel content-main">
+				<div class="panel">
+					<div class="page-head">
+						<ol class="breadcrumb page-head-nav">
+							<li><span style="font-size: 20px; cursor: pointer"
+								onclick="openNav()">&#9776;</span></li>
+							<li><a href="#">Home</a></li>
+							<li>Rendicion</li>
+							<li class="active">Funcionario</li>
+						</ol>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+
+						</div>
+					</div>
+
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+					<div class="panel-body">
+						<div class="row" style="padding-left: 15px; padding-right: 10px;">
+							<div class="col-sm-7">
+								<h4 class="text-primary">LISTADO </h4>
+								<br />
+							</div>
+							<div class="col-sm-5">&nbsp;</div>
+						
+						</div>
+						<div class="row">
+
+							<div class="table-responsive"
+								style="padding: 1em; text-align: center;">
+								<table id="listado"
+									class="table table-striped table-hover table-fw-widget table-text-small display3"
+									style="width: 100%; overflow-x: auto;">
+									<thead>
+										<tr style="text-align: left;">
+											<th class="small col-md-1">Juntos1</th>
+											<th class="small col-md-1">Juntos2</th>
+											<th class="small col-md-1">Juntos3</th>
+											<th class="small col-md-1">Juntos4</th>
+											<th class="small col-md-1" style="text-align: center;">Opciones</th>
+
+										</tr>
+									</thead>
+									<tbody style="font-size: 11px; text-align: left;">
+
+
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:include="views/moduloRendicion/rendicionAdministrado/modales/mostrarPdfAdjunto"></div>
+		<div th:include="views/moduloRendicion/rendicionAdministrado/modales/mostrarObservado"></div>
+
+	</div>
+	<footer th:replace="layout :: footer-consulta"></footer>
+	<div th:fragment="javascript">
+		<script type="text/javascript" th:src="@{js/funcionario.js}"></script>
+		
+	</div>
+</body>
+</html>

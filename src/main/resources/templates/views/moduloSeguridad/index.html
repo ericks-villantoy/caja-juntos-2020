@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head-consulta" />
+<body>
+	<div th:fragment="content">
+		<div class="containerLogin">
+				<input id="urlSec" name="urlSec" type="hidden" th:value="${urlSec}" />
+				<input id="codigoSistema" name="codigoSistema" type="hidden" th:value="${codigoSistema}" />
+			    <div class="login_panel">
+                    <div th:if="!${mensajeBloqueo}" class="panel panel-border-color-primary">
+                        <div class="panel-heading">
+                        	<img alt="logo" width="200" height="60" class="logo-img" th:src="@{img/logo.png}" /><br/>
+                        	<span class="description-login">Introduzca su información de usuario.</span>
+                        	
+                        </div>
+                        <div class="panel-body">
+                            <form id="frmLogin" th:action="@{/login}" method="POST">
+                            	<input id="jsonData" name="jsonData" type="hidden" />
+                            	<div class="form-group">
+                                    <input id="username" name="username" type="text" placeholder="Usuario" autocomplete="off" class="formulario_login" />
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" name="password" type="password" placeholder="Contraseña" class="formulario_login" />
+                                </div>
+                                <div align="center" th:if="${param.error}">
+									<p style="font-size: 20; color: #FF1C19;">Usuario o password errado, verifique</p>
+								</div>
+                                
+                                <div class="form-group ">
+                                    <button id="loginSubmit" type="submit" class=" login-submit btn btn-primary btn-xl">Ingresar</button>
+                                </div>
+                                
+                                <div class="col-sm-6"><a href="">Olvide mi contraseña</a></div>
+								<div class="col-sm-6">&nbsp;</div>
+								
+                                
+                            </form>
+                            
+                            <div>
+                            	<p style="color:red; font-size: 15px;font-weight: bold;"> <span  th:text="${mensaje}"></span></p>
+                            </div>
+                            
+                           
+                            
+                            
+
+
+                            
+
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="splash-footer"><span>© JUNTOS 2019 </span></div>
+                </div>
+            
+		</div>
+			
+	</div>
+	<footer th:replace="layout :: footer-consulta"></footer>
+	<div th:fragment="javascript">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>	
+		
+	</div>
+</body>
+</html>

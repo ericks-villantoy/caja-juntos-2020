@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+	
+	<div role="dialog" class="modal fade colored-header colored-header-primary" id="modalRendicionItem" data-backdrop="static" data-keyboard="false" >
+		<div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">ITEM DE RENDICIÓN</h3>
+                    <input id="idRutaRendicionDetalle" type="hidden" />
+                </div>
+                <div class="modal-body">
+                	<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="panel" style="padding-left: 1px; padding-right: 1px;">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"
+													title="Fecha de Item"> <i
+													class="glyphicon glyphicon-calendar"></i>
+												</span> <input type="text" class="form-control" id="fechaItem"
+													placeholder="Digíte Fecha de Item" />
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<select class="form-control input-sm select2"
+												id="selClaseItem">
+											</select>
+										</div>
+										
+									</div>
+									<br/>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"
+													title="Serie Documento"> <i
+													class="glyphicon glyphicon-calendar"></i>
+												</span> <input type="text" class="form-control" id="serieItem"
+													placeholder="Digíte Nº de Serie de documento" maxlength="5"/>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"
+													title="Número Documento"> <i
+													class="glyphicon glyphicon-calendar"></i>
+												</span> <input type="text" class="form-control"
+													id="numeroDocumentoItem"
+													placeholder="Digíte Nº de documento" maxlength="20" />
+											</div>
+										</div>
+									</div>
+									<br/>
+									<div class="row">
+										<div class="col-sm-12">
+											<select class="form-control input-sm select2"
+												id="selEspecificaItem">
+											</select>
+										</div>
+										
+									</div>
+									<br/>
+									<div class="row">
+										<div class="col-sm-12">
+											<textarea id="detalleItem" class="form-control" rows="4" cols="5" placeholder="Digite detalle del documento" maxlength="500"></textarea>
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="col-sm-6">
+								<div class="panel" style="padding-left: 1px; padding-right: 1px;">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"
+													title="Digíte Proveedor / Colaborador"> <i
+													class="glyphicon glyphicon-calendar"></i>
+												</span> <input type="text" class="form-control" id="proveedorItem"
+													placeholder="Digíte Proveedor / Colaborador" maxlength="100"/>
+											</div>
+										</div>
+										
+									</div>
+									<br/>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group">
+											<span class="input-group-addon btn-primary"
+												title="Ruc Proveedor / Colaborador"> <i
+												class="glyphicon glyphicon-calendar"></i>
+											</span> <input type="text" class="form-control numeric" id="rucProveedorItem"
+												placeholder="Digíte RUC del Proveedor / Colaborador" maxlength="11"/>
+										</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"
+													title="Digíte Importe"> <i
+													class="glyphicon glyphicon-calendar"></i>
+												</span> <input type="text" class="form-control numeric"
+													id="importeProveedorItem" placeholder="Digíte Importe" step="0.01" />
+											</div>
+										</div>
+									</div>
+									<br/>
+									<div class="row">
+										
+										<div class="col-sm-6">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"> <i
+													id="uploadDocumentoItem" class="glyphicon glyphicon-upload"></i>
+												</span> <input type="text" class="form-control col-sm-6"
+													id="documentoUploadItem" readonly="readonly"
+													placeholder="Subir archivo de referencia" />
+											</div>
+										</div>
+										
+										<div class="col-sm-6">
+											<div class="input-group">
+												<span class="input-group-addon btn-primary"
+													title="Digíte Folios"> <i
+													class="glyphicon glyphicon-calendar"></i>
+												</span> <input type="text" class="form-control numeric" id="foliosItem"
+													placeholder="Digíte Nº de Folios" maxlength="3"/>
+											</div>
+										</div>
+										
+									</div>
+									<br/>
+								</div>
+							
+							</div>
+						</div>
+						<div id="divTarifario" class="row" style="display: none">
+							<hr style="margin-top: 1px; margin-bottom: 1px;" />
+							<div class="panel-body">
+								<div class="row"
+									style="padding-left: 15px; padding-right: 10px;">
+									<div class="col-sm-2">
+										<h4 class="text-primary">TARIFARIO</h4>
+										<br />
+									</div>
+									<div class="col-sm-7">
+										<select class="form-control input-sm select2"
+											id="selTarifarioItem">
+										</select>
+									</div>
+									<div class="col-sm-3">
+										<button type="button" 
+											class="btn btn-primary" id="agregarTarifario">
+											<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Agregar
+										</button>
+									</div>
+
+								</div>
+								<div class="row">
+
+									<div class="table-responsive"
+										style="padding: 1em; text-align: center;">
+										<table id="listadoTarifario"
+											class="table table-striped table-hover table-fw-widget table-text-small display3"
+											style="width: 100%; overflow-x: auto;">
+											<thead>
+												<tr style="text-align: left;">
+													<th class="small col-md-2">Descripcion</th>
+													<th class="small col-md-4">Monto</th>
+													<th class="small col-md-1" style="text-align: center;">Opciones</th>
+
+												</tr>
+											</thead>
+											<tbody style="font-size: 11px; text-align: left;">
+
+
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+						
+						
+					
+					</div>
+                   
+                </div>
+                
+                <div class="modal-footer">
+                	<div class="col-sm-2">
+						<button class="btn btn-danger" data-dismiss="modal">
+							<i class="glyphicon glyphicon-minus"></i>&nbsp;Cancelar
+						</button>
+					</div>
+					<div class="col-sm-8">&nbsp;
+					</div>
+					<div class="col-sm-2">
+					<button type="button" class="btn btn-primary"
+						id="grabarItem">
+						<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Aceptar
+					</button>
+					</div>
+                    
+                </div>
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

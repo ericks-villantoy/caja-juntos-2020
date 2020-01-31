@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+	
+	<div role="dialog" class="modal fade colored-header colored-header-primary" id="modalRendicionItem" data-backdrop="static" data-keyboard="false" >
+		<div class="modal-dialog custom-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">ITEM DE RENDICIÓN</h3>
+                    <input id="idRutaRendicionDetalle" type="hidden" />
+                </div>
+                <div class="modal-body">
+                	<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						
+						<div class="row">
+								<div class="panel" style="padding-left: 1px; padding-right: 1px;">
+									<div class="row">
+										<div class="col-sm-6">
+											<b><small>FECHA ITEM&nbsp;</small></b>: <span id="fechaItem"></span><br />
+											<b><small>CLASE DOCUMENTO&nbsp;</small></b>: <span id="claseItem"></span><br />
+											<b><small>SERIE DOCUMENTO&nbsp;</small></b>: <span id="serieItem"></span><br />
+											<b><small>NUMERO DOCUMENTO&nbsp;</small></b>: <span id="numeroDocumentoItem"></span><br />
+											<b><small>ESPECIFICA&nbsp;</small></b>: <span id="especificaItem"></span><br />
+											<b><small>DETALLE&nbsp;</small></b>: <span id="detalleItem"></span><br />
+											
+										</div>
+										<div class="col-sm-6">
+											<b><small>PROVEEDOR/COLABORADOR&nbsp;</small></b>: <span id="proveedorItem"></span><br />
+											<b><small>RUC&nbsp;</small></b>: <span id="rucProveedorItem"></span><br />
+											<b><small>IMPORTE&nbsp;</small></b>: <span id="importeProveedorItem"></span><br />
+											<b><small>NUMERO FOLIOS&nbsp;</small></b>: <span id="foliosItem"></span><br />
+											<b><small>DOCUMENTO REFERENCIA&nbsp;</small></b>: <img id="documentoUpload" th:src="@{/img/pdf.png}" onclick="visualizaDocumentoReferencia();"
+												alt="Visualizar Documento" width="35" /><br />
+										</div>
+										
+									</div>
+									<br/>
+									
+								</div>
+							
+						</div>
+						<div class="row" >
+							<div id="divTarifario" class="row" style="display: none">
+								<hr style="margin-top: 1px; margin-bottom: 1px;" />
+								<div class="panel-body">
+									<div class="row"
+										style="padding-left: 15px; padding-right: 10px;">
+										<div class="col-sm-3">
+											<h4 class="text-primary">TARIFARIO</h4>
+											<br />
+										</div>
+										<div class="col-sm-9">
+											&nbsp;
+										</div>
+									</div>
+									<div class="row">
+	
+										<div class="table-responsive"
+											style="padding: 1em; text-align: center;">
+											<table id="listadoTarifario"
+												class="table table-striped table-hover table-fw-widget table-text-small display3"
+												style="width: 100%; overflow-x: auto;">
+												<thead>
+													<tr style="text-align: left;">
+														<th class="small col-md-2">Descripcion</th>
+														<th class="small col-md-4">Monto</th>
+														
+													</tr>
+												</thead>
+												<tbody style="font-size: 11px; text-align: left;">
+	
+	
+												</tbody>
+											</table>
+										</div>
+	
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+					
+					</div>
+                   
+                </div>
+                
+                <div class="modal-footer">
+                	<div class="col-sm-10">
+						&nbsp;
+					</div>
+					<div class="col-sm-2">
+					<button type="button" class="btn btn-primary"
+						data-dismiss="modal">
+						<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Aceptar
+					</button>
+					</div>
+                    
+                </div>
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

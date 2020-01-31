@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div role="dialog"
+		class="modal fade colored-header colored-header-primary"
+		id="modalMensajeContrasenaExpira">
+		<div class="modal-dialog custom-width">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">ESTIMADO/A USUARIO</h3>
+					
+				</div>
+
+				<div class="modal-body">
+					<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						<div class="row">
+							<div class="col-sm-10 text-center">
+								<h3>SU CONTRASEÑA EXPIRARÁ EN <b><span id="diasFaltaCaducar" class="diasFaltaCaducar" style="font-size: 17px;"></span></b> DÍAS</h3>
+								<h3>!AHORA DEBE CAMBIAR SU CONTRASEÑA¡</h3>
+								<p class="text-primary text-center"> 
+								Para cambiar su contraseña haga "click" en la opcion "CAMBIAR"
+								</p>
+							</div>
+						</div>	
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<div class="col-sm-2" id="cancelarCambio">
+						<button class="btn btn-danger" data-dismiss="modal">
+							<i class="glyphicon glyphicon-minus"></i>&nbsp;CANCELAR
+						</button>
+					</div>
+					<div class="col-sm-6">&nbsp;
+					</div>
+					<div class="col-sm-4">
+					<button type="button" data-dismiss="modal" class="btn btn-primary"
+						id="cambiarContrasena">
+						<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;CAMBIAR
+					</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

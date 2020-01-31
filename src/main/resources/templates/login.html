@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head-consulta" />
+<body  class="bodyLogin">
+ 
+ 	<div th:replace="${view} :: content">En este lugar se reemplazara el contenido</div>
+	
+	<footer th:replace="fragments/footer :: footer"></footer>
+	
+	<div th:replace="${view} :: javascript"></div>
+	<script th:inline="javascript">
+			var contextRoot = /*[[@{/}]]*/ '';
+	</script>
+
+</body>
+</html>
+

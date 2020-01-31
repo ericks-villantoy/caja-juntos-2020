@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div role="dialog"
+		class="modal fade colored-header colored-header-primary"
+		id="modalApertura">
+		<div class="modal-dialog custom-width">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true"
+						class="close md-close">
+						<span class="glyphicon glyphicon-remove cerrarIcon"></span>
+					</button>
+					<h3 class="modal-title">Modulo de Apertura y Cierre</h3>
+					<input type="hidden" id="idAperturaCierre" />
+				</div>
+
+				<div class="modal-body">
+					<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						<div class="row">
+							<b class="text-primary"><span style="font-size: 15px;">&nbsp;&nbsp;EDITAR
+									APERTURA</span></b><br /> 
+							
+						</div>
+					</div>
+					
+					<hr style="margin-top: 1px; margin-bottom: 1px;" />
+
+					<div class="panel" style="padding-left: 5px; padding-right: 5px;">
+						<div class="row">
+							<!-- <div class="col-sm-12">
+								<b class="text-primary"><small>Datos de Registro</small></b>
+							</div>
+							 -->
+							<div class="col-sm-6">
+									<select class="form-control input-sm select2" id="selSedeApertura">
+											<option value="0">Seleccione Sede</option>
+											<option th:each="sede : ${listadoSedes}"
+													th:value="${sede.idSede}"
+													th:text="${sede.descripcionSede.trim()}"></option>
+									</select>
+							</div>
+							<div class="col-sm-6">
+																									
+									<select class="form-control input-sm select2" id="selAniosApertura">
+											<option value="0">Seleccione A&ntilde;o</option>
+											<option th:each="anio : ${listadoAnio}"
+													th:value="${anio.anio}"
+													th:text="${anio.descripcion.trim()}"></option>
+									</select>									
+							</div>
+							
+							<br/><br/><br/><br/>
+							
+							<div class="col-sm-12">
+									<select class="form-control input-sm select2" id="selEspecifica">
+											<option value="0">Seleccione Específica de Gasto</option>
+											<option th:each="especifica : ${listadoEspecificas}"
+													th:value="${especifica.idEspecifica}"
+													th:text="${especifica.codigoDescEspecifica.trim()}"></option>
+									</select>
+							</div>
+							
+							<br/><br/><br/><br/>
+							
+							
+							<div class="col-sm-12">
+
+								<div class="col-sm-6">
+
+									<div class="input-group">
+										<span class="input-group-addon btn-primary"> <i
+											class="glyphicon glyphicon-phone"></i>
+										</span> <input type="text" class="form-control col-sm-6 numeric"
+											id="montoApertura" placeholder="Monto Apertura (S/.)" />
+									</div>
+
+								</div>
+
+								<div class="col-sm-6">
+								
+									<div class="input-group">
+										<span class="input-group-addon btn-primary"> <i
+											class="glyphicon glyphicon-phone"></i>
+										</span> <input type="text" class="form-control col-sm-6 numeric"
+											id="montoLiquidacion" placeholder="Monto Liquidaci&oacute;n (S/.)" />
+									</div>
+								
+								
+								</div>
+							
+							
+							</div>
+							<br/><br/><br/><br/>
+							
+							
+							
+							<div class="col-sm-12">
+
+								<div class="col-sm-6">
+
+									<div class="input-group">
+										<span class="input-group-addon btn-primary"> <i
+											class="glyphicon glyphicon-phone"></i>
+										</span> <input type="text" class="form-control col-sm-6 numeric"
+											id="montoEjecucion" placeholder="Monto Ejecuci&oacute;n (S/.)"  readonly="readonly"/>
+									</div>
+
+								</div>
+
+								<div class="col-sm-6">
+								
+									<div class="input-group">
+										<span class="input-group-addon btn-primary"> <i
+											class="glyphicon glyphicon-phone"></i>
+										</span> <input type="text" class="form-control col-sm-6 numeric"
+											id="saldo" placeholder="Saldo (S/.)"  readonly="readonly"/>
+									</div>
+								
+								
+								</div>
+							
+							
+							</div>
+							
+							<br/><br/><br/><br/>
+							<div class="col-sm-12">
+
+								<div class="col-sm-6">
+
+									<div class="input-group">
+										<span class="input-group-addon btn-primary"> <i
+											class="glyphicon glyphicon-phone"></i>
+										</span> <input type="text" class="form-control col-sm-6"
+											id="descCerrado" placeholder="Estado"  readonly="readonly"/>
+									</div>
+
+								</div>
+								
+							
+							
+							</div>
+							
+
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<div class="col-sm-2">
+						<button class="btn btn-danger" data-dismiss="modal">
+							<i class="glyphicon glyphicon-minus"></i>&nbsp;Cancelar
+						</button>
+					</div>
+					<div class="col-sm-8">&nbsp;</div>
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-primary"
+							id="grabarRegistro">
+							<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Aceptar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head></head>
+<body>
+<div class="side-menu" th:fragment="indexMenu">
+    
+    <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+   
+    <!-- Main Menu -->
+    <div class="side-menu-container">
+    <br/>
+        <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+			<li class="menuP">Menu <a href="javascript:void(0)"><span class="closebtn glyphicon glyphicon-remove"></span></a></li>
+			<li id="menuHome" class="active"><a href="./"> <span class="glyphicon glyphicon-home"></span>Inicio</a></li>
+            <!-- Dropdown-->
+            <li class="panel panel-default" id="dropdown" >
+                <a id="menuEvaluacion" data-toggle="collapse" href="#dropdown-evaluacion" class="collapsed">
+                    <span class="glyphicon glyphicon-book"></span> Maestros <span class="caret"></span>
+                </a>
+
+               
+                <div id="dropdown-evaluacion" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                        	<li id="menuTarifario" sec:authorize="hasAnyAuthority('ROLE_002','ROLE_003')"><a href="./tarifario">Tarifario</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="panel panel-default" id="dropdown" >
+                <a id="menuRendicion" data-toggle="collapse" href="#dropdown-rendicion" class="collapsed">
+                    <span class="glyphicon glyphicon-book"></span> Rendicion <span class="caret"></span>
+                </a>
+               
+                <div id="dropdown-rendicion" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                        	<li id="menuRendicionAdministrado" sec:authorize="hasAuthority('ROLE_001')" ><a href="./rendicionAdministrado" >Rendicion Administrado</a></li>
+                        	<li id="menuRendicionAprobacion"  sec:authorize="hasAnyAuthority('ROLE_004','ROLE_005','ROLE_003','ROLE_002')"><a th:href="@{/rendicionAprobacion}" >Rendicion Aprobacion</a></li>
+                        	<li id="menuRendicionCajaChica" sec:authorize="hasAnyAuthority('ROLE_002', 'ROLE_003')"><a href="./rendicionCajaChica" >Rendicion Mensual</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+			
+
+            <li class="panel panel-default" id="dropdown" sec:authorize="hasAnyAuthority('ROLE_002', 'ROLE_003')" >
+                <a id="menuConsultas" data-toggle="collapse" href="#dropdown-avanzado" class="collapsed">
+                    <span class="glyphicon glyphicon-book"></span> Consultas <span class="caret"></span>
+                </a>
+                <div id="dropdown-avanzado" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                        	<li id="consultaCajaChica"><a href="./consulraRendicionCajaChica">Caja Chica</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="panel panel-default" id="dropdown" >
+                <a id="menuAperturaCierre" data-toggle="collapse" href="#dropdown-apertura" class="collapsed">
+                    <span class="glyphicon glyphicon-book"></span> Apertura Cierre <span class="caret"></span>
+                </a>
+
+               
+                <div id="dropdown-apertura" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <ul class="nav navbar-nav">
+                        	<li id="menuAperturaCierre" sec:authorize="hasAnyAuthority('ROLE_002','ROLE_003')"><a href="./apertura">Apertura Cierre</a></li>
+                        	
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            
+            
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+	
+	<br />
+	<div class="footer-juntos" ><br/>&copy;
+		JUNTOS  2019  SISCACHI - Beta001
+	</div>
+	<br />
+	
+    
+</div>
+    
+  
+    
+
+		
+</body>
+
+</html>

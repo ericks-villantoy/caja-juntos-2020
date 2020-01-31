@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: head-consulta" />
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div th:replace="fragments/indexHeader"></div>
+	</nav>
+	<div id="wrapper">
+		<div th:replace="fragments/indexMenu"></div>
+	</div>
+	<div th:fragment="content">
+		<div class="container">
+			<div class="panel content-main">
+				<div class="panel">
+					<div class="page-head">
+						<ol class="breadcrumb page-head-nav">
+							<li><span style="font-size: 20px; cursor: pointer" onclick="openNav()">&#9776;</span></li>
+							<li><a href="#">Home</a></li>
+		                    <li>Mantenimiento</li>
+		                    <li class="active">Tarifario</li>
+						</ol>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-12">
+							
+								<b class="text-primary"><small>FILTRO</small></b><br/><br/>
+								
+								<div class="col-sm-12">
+									<div class="col-sm-4">
+									<select class="form-control input-sm select2" id="selSedes">
+											<option value="0">Seleccione Sede</option>
+											<option th:each="sede : ${listadoSedes}"
+													th:value="${sede.idSede}"
+													th:text="${sede.descripcionSede.trim()}"></option>
+									</select>
+									</div>
+									<div class="col-sm-4">
+										<div class="row">
+											<div class="col-sm-1" style="margin-left: -10px;">
+												<label class="customcheck"> 
+												<input type="checkbox" id="cb_activos" /> 
+													<span class="checkmark" id="activos"></span>
+												</label>
+											</div>
+											<div class="col-sm-11">
+												<label style="text-align: right;"> Activos </label>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-sm-4">&nbsp;</div>
+									<br/><br/>
+								</div>
+								
+								<div class="col-sm-12">
+									
+									<div class="col-sm-4">
+											<input type="text" class="form-control text-capitalize"
+													name="ruta" id="ruta" placeholder="Nombre de Ruta" maxlength="20"/>
+									</div>
+									<div class="col-sm-4">
+											&nbsp;
+									</div>
+	
+									<div class="col-sm-4">
+											<div class="input-group">
+													<button class="btn btn-azul" 
+														onclick="cargarConsulta();">
+														<i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar
+													</button>
+											
+											</div>
+									</div>
+
+								</div>
+							
+							</div>
+						</div>
+					</div>	
+					
+					<hr style="margin-top: 1px;  margin-bottom: 1px; "/>
+					<div class="panel-body">
+						<div class="row" style="padding-left: 15px;padding-right: 10px;">
+							<div class="col-sm-7">
+								<h4 class="text-primary">LISTADO DE TARIFARIO</h4>
+								<br />
+							</div>
+							<div class="col-sm-3">&nbsp;</div>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<button class="btn btn-danger" onclick="nuevoTarifario();">
+										<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Nuevo
+									</button>
+
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							
+								<div  class="table-responsive" style="padding:1em; text-align: center;" >
+									<table id="listadoTarifario"
+										class="table table-striped table-hover table-fw-widget table-text-small display3" style="width:100%;overflow-x: auto;">
+										<thead>
+											<tr style="text-align: left;">
+												<th class="small col-md-3">Ruta</th>
+												<th class="small col-md-3">Inicio</th>
+												<th class="small col-md-3">Fin</th>
+												<th class="small col-md-1">Tarifa</th>
+												<th class="small col-md-2">Opciones</th>
+												
+											</tr>
+										</thead>
+										<tbody  style="font-size: 11px; text-align: left;">
+										
+															
+										</tbody>
+									</table>
+								</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div th:include="views/moduloMantenimiento/tarifario/modales/nuevo"></div>
+		
+		
+	</div>
+	<footer th:replace="layout :: footer-consulta"></footer>
+	<div th:fragment="javascript">
+		<script type="text/javascript"
+			th:src="@{/js/tarifario.js}"></script>
+		<script type="text/javascript" th:src="@{/js/bootstrap.fd.js}"></script>
+			
+		
+			
+		
+	</div>
+</body>
+</html>
